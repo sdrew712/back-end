@@ -1,3 +1,5 @@
+const displayText = [];
+
 module.exports = {
   getCompliment: (req, res) => {
     const compliments = [
@@ -30,15 +32,24 @@ module.exports = {
     res.status(200).send(randomFortune);
   },
 
-  // displayText: (req, res) => {
-  //   let text = "Waddup"
+  displayText: (req, res) => {
+   
+    // globalId = 0;
 
-  //   let h2 = document.createElement("h2") //create h2
-  //   var text = document.createTextNode(text); //create text
+    let { text } = req.body
 
-  //   h2.appendChild(text);  //add text to h2
-  //   document.body.appendChild(h2) //add div to body
+    console.log(text);
 
-  //   res.status(200).send(h2)
-  // }
+    // let newDisplayText = {
+    //     id: globalId,
+    //     text: text
+    // }
+
+    displayText.push(text)
+
+    // globalId++
+
+
+    res.status(200).send(text)
+  }
 }

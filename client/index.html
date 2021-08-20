@@ -8,8 +8,11 @@
 
     <button id="fortuneButton">Get a fortune</button>
 
-    <!-- <button id="postText">Display some text</button> -->
-
+    <form>
+      <label for="postText">Display some text</label>
+      <input type="text" id="postText" name="postText">
+      <input type="submit" value="Submit">
+    </form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
@@ -29,9 +32,20 @@
           });
       };
 
-      // document.getElementById("postText").onclick = function () {   
-      //   axios.post("http://localhost:4000/api/")
-      // };
+      document.getElementById("postText").onclick = function () {   
+        axios.post("http://localhost:4000/api/", params)
+        .then(function (response) {
+          let div = document.createElement("div") //create h2
+
+          const data = response.data;
+
+          const h1 = document.createElement('h1');
+          const text = document.createTextNode(data);
+          h1.appendChild(text);
+
+          document.body.appendChild(div) //add div to body
+          });
+      };
     </script>
   </body>
 </html>
