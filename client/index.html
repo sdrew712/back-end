@@ -8,44 +8,14 @@
 
     <button id="fortuneButton">Get a fortune</button>
 
-    <form>
-      <label for="postText">Display some text</label>
-      <input type="text" id="postText" name="postText">
-      <input type="submit" value="Submit">
+    <form id="text-form">
+      What do you need to get done today? <input type="text" id="input-text">
+      <button>Submit</button>
     </form>
 
+    <div id="tasklist-container"></div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <script>
-      document.getElementById("complimentButton").onclick = function () {
-        axios.get("http://localhost:4000/api/compliment")
-            .then(function (response) {
-              const data = response.data;
-              alert(data);
-            });
-      };
-      document.getElementById("fortuneButton").onclick = function () {
-        axios.get("http://localhost:4000/api/fortune")
-          .then(function (response) {
-            const data = response.data;
-            alert(data);
-          });
-      };
-
-      document.getElementById("postText").onclick = function () {   
-        axios.post("http://localhost:4000/api/", params)
-        .then(function (response) {
-          let div = document.createElement("div") //create h2
-
-          const data = response.data;
-
-          const h1 = document.createElement('h1');
-          const text = document.createTextNode(data);
-          h1.appendChild(text);
-
-          document.body.appendChild(div) //add div to body
-          });
-      };
-    </script>
+    <script src="./main.js"></script>
   </body>
 </html>

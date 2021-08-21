@@ -1,4 +1,5 @@
-const displayText = [];
+const taskList = [];
+let globalId = 1;
 
 module.exports = {
   getCompliment: (req, res) => {
@@ -12,7 +13,7 @@ module.exports = {
     let randomIndex = Math.floor(Math.random() * compliments.length);
     let randomCompliment = compliments[randomIndex];
 
-    res.status(200).send("i made a change!");
+    res.status(200).send(randomCompliment);
   },
 
   getFortune: (req, res) => {
@@ -33,23 +34,17 @@ module.exports = {
   },
 
   displayText: (req, res) => {
-   
-    // globalId = 0;
+    // console.log(req.body);
 
-    let { text } = req.body
+    const { text } = req.body;
 
-    console.log(text);
+    const newTask = {
+      text,
+      id: globalId
+    }
 
-    // let newDisplayText = {
-    //     id: globalId,
-    //     text: text
-    // }
-
-    displayText.push(text)
-
-    // globalId++
-
-
-    res.status(200).send(text)
+    taskList.push(newTask);
+    // console.log(taskList);
+    res.status(200).send(taskList)
   }
 }

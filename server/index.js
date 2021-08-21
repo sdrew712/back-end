@@ -13,6 +13,6 @@ app.get("/api/compliment", controller.getCompliment);
 
 app.get("/api/fortune", controller.getFortune);
 
-app.post("/api", controller.displayText)
+app.post("/api/display", controller.displayText)
 
 app.listen(4000, () => console.log("Server running on 4000"));
