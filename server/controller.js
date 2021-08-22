@@ -34,8 +34,6 @@ module.exports = {
   },
 
   displayText: (req, res) => {
-    // console.log(req.body);
-
     const { text } = req.body;
 
     const newTask = {
@@ -44,7 +42,17 @@ module.exports = {
     }
 
     taskList.push(newTask);
-    // console.log(taskList);
+    
+    res.status(200).send(taskList)
+  },
+
+  deleteTask: (req, res) => {
+    const {id} = req.params;
+
+    const index = taskList.findIndex(e => e.id === +id)
+
+    taskList.splice(index, 1)
+    
     res.status(200).send(taskList)
   }
 }
